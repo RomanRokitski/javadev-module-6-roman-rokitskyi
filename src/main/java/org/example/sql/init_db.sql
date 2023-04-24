@@ -1,7 +1,3 @@
--- https://miro.com/app/board/uXjVMbgHa3E=/
-
---Створення таблиці worker 
-
 CREATE TABLE IF NOT EXISTS worker (
     id INT PRIMARY KEY,
     name VARCHAR NOT NULL,
@@ -13,14 +9,10 @@ CREATE TABLE IF NOT EXISTS worker (
         CHECK (100 <= salary AND salary <= 100000)
 );
 
--- Створення таблиці client
-
 CREATE TABLE IF NOT EXISTS client (
     id IDENTITY PRIMARY KEY,
     name VARCHAR(1000) NOT NULL
 );
-
---Створення таблиці project
 
 CREATE TABLE IF NOT EXISTS project (
     id IDENTITY PRIMARY KEY,
@@ -29,8 +21,6 @@ CREATE TABLE IF NOT EXISTS project (
     start_date DATE,
     finish_date DATE
 );
-
---Створення таблиці project_worker
 
 CREATE TABLE IF NOT EXISTS project_worker (
     project_id BIGINT NOT NULL,
