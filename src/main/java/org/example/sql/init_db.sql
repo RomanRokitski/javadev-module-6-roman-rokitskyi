@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS worker (
-    id INT PRIMARY KEY,
+    id IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
         CHECK (LENGTH(name) >= 2 AND LENGTH(name) <= 1000),
     birthday DATE,
