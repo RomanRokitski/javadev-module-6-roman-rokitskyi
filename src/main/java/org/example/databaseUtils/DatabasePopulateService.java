@@ -47,8 +47,7 @@ public class DatabasePopulateService {
                 }
 
                 prepareStatementWorkers.executeBatch();
-
-                //-------------Insert clients
+//-------------Insert clients
                 PreparedStatement preparedStatementClients = conn.prepareStatement(CLIENT_SQL);
 
                 int[] client_ids = {1, 2, 3, 4, 5};
