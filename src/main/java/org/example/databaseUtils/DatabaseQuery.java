@@ -1,6 +1,6 @@
 package org.example.databaseUtils;
 
-public class Main {
+public class DatabaseQuery {
     public static void main(String[] args) {
         DatabaseQueryService databaseQueryService = new DatabaseQueryService();
         System.out.println("databaseQueryService.findLongestProjects() = " + databaseQueryService.findLongestProjects());
