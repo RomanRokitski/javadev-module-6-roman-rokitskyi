@@ -10,7 +10,6 @@ public class DatabasePopulateService {
     static final String CLIENT_SQL = "INSERT INTO client (id, name) VALUES (?, ?)";
     static final String PROJECT_SQL = "INSERT INTO project (id, client_id, start_date, finish_date) VALUES (?, ?, ?, ?)";
     static final String PROJECT_WORKER_SQL = "INSERT INTO project_worker (project_id, worker_id) VALUES (?, ?)";
-
     Connection conn = Database.getInstance().getConnection();
 
     public void insertWorker() {
@@ -77,7 +76,6 @@ public class DatabasePopulateService {
         try {
             PreparedStatement prepareStatementProject = conn.prepareStatement(PROJECT_SQL);
 
-
             int[] p_ids = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
             int[] p_client_ids = {1, 2, 2, 3, 3, 3, 4, 4, 5, 5};
             Date[] p_start_dates = {
@@ -125,7 +123,6 @@ public class DatabasePopulateService {
         try {
             PreparedStatement preparedStatementProjectWorker = conn.prepareStatement(PROJECT_WORKER_SQL);
 
-
             int[] projects_id = {1, 1, 1, 2, 2, 3, 3, 3, 4, 4, 5, 5, 5, 6, 6, 6, 7, 8, 8, 9, 9, 9, 10, 10};
             int[] workers_ids = {1, 4, 7, 2, 5, 3, 6, 9, 1, 8, 3, 8, 9, 2, 6, 9, 1, 5, 4, 3, 6, 10, 4, 10};
 
@@ -143,4 +140,3 @@ public class DatabasePopulateService {
         }
     }
 }
-
