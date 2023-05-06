@@ -11,6 +11,7 @@ import java.util.Properties;
 public class FlywayConfigurations {
     private static final String DEFAULT_FILE_NAME = "application.properties";
     private Flyway flyway;
+
     public FlywayConfigurations setup() throws IOException {
         setup(DEFAULT_FILE_NAME);
         return this;
@@ -19,7 +20,7 @@ public class FlywayConfigurations {
     public FlywayConfigurations setup(String propertiesFileName) throws IOException {
 
         Properties properties = new Properties();
-        properties.load((InputStream) FlywayConfigurations.class.getClassLoader().getResources(propertiesFileName));
+        properties.load(FlywayConfigurations.class.getClassLoader().getResourceAsStream(propertiesFileName));
 
         String url = properties.getProperty(Constants.FLYWAY_CONNECTION_URL);
         String username = properties.getProperty(Constants.FLYWAY_USER);
@@ -36,6 +37,7 @@ public class FlywayConfigurations {
                 .load();
         return this;
     }
+
     public void migrate() {
         flyway.migrate();
     }
