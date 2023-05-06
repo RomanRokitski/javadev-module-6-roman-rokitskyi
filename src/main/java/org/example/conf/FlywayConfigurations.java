@@ -4,6 +4,7 @@ import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.Location;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
@@ -18,7 +19,7 @@ public class FlywayConfigurations {
     public FlywayConfigurations setup(String propertiesFileName) throws IOException {
 
         Properties properties = new Properties();
-        properties.load(FlywayConfigurations.class.getClassLoader().getResourceAsStream(propertiesFileName));
+        properties.load((InputStream) FlywayConfigurations.class.getClassLoader().getResources(propertiesFileName));
 
         String url = properties.getProperty(Constants.FLYWAY_CONNECTION_URL);
         String username = properties.getProperty(Constants.FLYWAY_USER);

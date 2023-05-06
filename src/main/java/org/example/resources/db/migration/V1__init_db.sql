@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS worker (
+CREATE TABLE worker (
     id IDENTITY PRIMARY KEY,
     name VARCHAR NOT NULL,
         CHECK (LENGTH(name) >= 2 AND LENGTH(name) <= 1000),
@@ -9,12 +9,12 @@ CREATE TABLE IF NOT EXISTS worker (
         CHECK (100 <= salary AND salary <= 100000)
 );
 
-CREATE TABLE IF NOT EXISTS client (
+CREATE TABLE client (
     id IDENTITY PRIMARY KEY,
     name VARCHAR(1000) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS project (
+CREATE TABLE project (
     id IDENTITY PRIMARY KEY,
     client_id BIGINT NOT NULL,
     FOREIGN KEY(client_id) REFERENCES client(id),
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS project (
     finish_date DATE
 );
 
-CREATE TABLE IF NOT EXISTS project_worker (
+CREATE TABLE project_worker (
     project_id BIGINT NOT NULL,
     worker_id BIGINT NOT NULL,
     PRIMARY KEY (project_id, worker_id),
