@@ -4,7 +4,6 @@ import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.Location;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
@@ -26,11 +25,11 @@ public class FlywayConfigurations {
         String username = properties.getProperty(Constants.FLYWAY_USER);
         String password = properties.getProperty(Constants.FLYWAY_PASSWORD);
 
-        Location migrations = new Location("db/migration");
-        Location mixtures = new Location("db/mixture");
+        Location migrations = new Location("db.migration");
+        //Location mixtures = new Location("qq/mixtu");
         flyway = Flyway.configure()
                 .encoding(StandardCharsets.UTF_8)
-                .locations(migrations, mixtures)
+                .locations(migrations)
                 .dataSource(url, username, password)
                 .placeholderReplacement(false)
                 .failOnMissingLocations(true)
