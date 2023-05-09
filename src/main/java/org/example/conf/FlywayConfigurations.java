@@ -1,5 +1,6 @@
 package org.example.conf;
 
+import org.example.conf.util.Constants;
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.Location;
 
@@ -25,11 +26,11 @@ public class FlywayConfigurations {
         String username = properties.getProperty(Constants.FLYWAY_USER);
         String password = properties.getProperty(Constants.FLYWAY_PASSWORD);
 
-        Location migrations = new Location("db.migration");
-        //Location mixtures = new Location("qq/mixtu");
+        Location migrations = new Location("db/migration");
+        Location mixtures = new Location("db/mixture");
         flyway = Flyway.configure()
                 .encoding(StandardCharsets.UTF_8)
-                .locations(migrations)
+                .locations(migrations,mixtures)
                 .dataSource(url, username, password)
                 .placeholderReplacement(false)
                 .failOnMissingLocations(true)
