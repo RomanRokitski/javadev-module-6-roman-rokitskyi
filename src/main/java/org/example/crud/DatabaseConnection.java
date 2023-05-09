@@ -29,7 +29,7 @@ public class DatabaseConnection {
         return connection;
     }
 
-    public void close(){
+    public void close() {
         try {
             connection.close();
         } catch (SQLException e) {

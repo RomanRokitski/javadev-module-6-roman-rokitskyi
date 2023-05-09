@@ -30,14 +30,13 @@ public class FlywayConfigurations {
         Location mixtures = new Location("db/mixture");
         flyway = Flyway.configure()
                 .encoding(StandardCharsets.UTF_8)
-                .locations(migrations,mixtures)
+                .locations(migrations, mixtures)
                 .dataSource(url, username, password)
                 .placeholderReplacement(false)
                 .failOnMissingLocations(true)
                 .load();
         return this;
     }
-
     public void migrate() {
         flyway.migrate();
     }

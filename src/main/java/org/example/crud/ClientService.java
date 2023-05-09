@@ -67,15 +67,23 @@ public class ClientService {
         }
     }
 
-    public void deleteById(long id) {
+    public void deleteByID(long id) {
         try (Connection conn = DatabaseConnection.getInstance().getConnection()) {
-            if (id == 0) {
-                throw new RuntimeException("Wrong id!");
-            }
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM client WHERE id = ?");
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM PROJECT_WORKER WHERE PROJECT_ID IN (SELECT ID FROM PROJECT WHERE CLIENT_ID = ?)");
             pstmt.setLong(1, id);
+            pstmt.executeUpdate();
 
-            pstmt.executeQuery();
+            pstmt = conn.prepareStatement("DELETE FROM PROJECT WHERE CLIENT_ID = ?");
+            pstmt.setLong(1, id);
+            pstmt.executeUpdate();
+
+            pstmt = conn.prepareStatement("DELETE FROM client WHERE id = ?");
+            pstmt.setLong(1, id);
+            pstmt.executeUpdate();
+
+            System.out.println("Client and related projects and workers deleted successfully.");
+        } catch (SQLException e) {
+            System.err.println("Error executing SQL: " + e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }

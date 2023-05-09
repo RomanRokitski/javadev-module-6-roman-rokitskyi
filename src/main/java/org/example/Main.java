@@ -16,6 +16,8 @@ public class Main {
 
         ClientService clientService = new ClientService();
         System.out.println("clientService.listAll() = " + clientService.listAll());
+        clientService.deleteByID(4);
+        System.out.println("clientService.listAll() = " + clientService.listAll());
 
     }
 }
